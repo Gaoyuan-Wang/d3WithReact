@@ -2,7 +2,7 @@ import * as d3 from "d3";
 //import { useState } from "react";
 
 async function loadData() {
-  var fileFath = "data/test.csv"
+  var fileFath = "data/Avocado_HassAvocadoBoard_20152023v1.0.1.csv"
   const data = await d3.csv(fileFath);
   //console.log(data);
   return data
@@ -68,12 +68,15 @@ function drawChart(data) {
 }
 
 export default function Chart1() {
-  //const [dataset, setState] = useState([]);
   loadData().then((data) => {
-    // datas = data
-    // setState(JSON.stringify(data[0]));
-    // console.log(data[0])
-    drawChart(data);
+    var filteredDataForAlbanyConventional = data.filter(d => d.region === "Atlanta" && d.type === "conventional");
+    var filteredDataForAlbanyOrganic = data.filter(d => d.region === "Atlanta" && d.type === "organic");
+    var b1 = data.filter(d => d.region === "Chicago" && d.type === "conventional");
+    var b2 = data.filter(d => d.region === "Chicago" && d.type === "organic");
+    drawChart(filteredDataForAlbanyConventional);
+    drawChart(filteredDataForAlbanyOrganic);
+    drawChart(b1);
+    drawChart(b2);
     return data[0];
   });
   
