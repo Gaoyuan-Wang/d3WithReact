@@ -24,8 +24,8 @@ async function loadData() {
 
 
 function drawBarChart(data) {
-  const width = 680;
-  const height = 400;
+  const width = 800;
+  const height = 600;
   const marginTop = 20;
   const marginRight = 20;
   const marginBottom = 30;
